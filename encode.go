@@ -18,6 +18,8 @@ import (
 	"github.com/BurntSushi/toml/internal"
 )
 
+const tagValue = "json"
+
 type tomlEncodeError struct{ error }
 
 var (
@@ -641,7 +643,7 @@ type tagOptions struct {
 }
 
 func getOptions(tag reflect.StructTag) tagOptions {
-	t := tag.Get("toml")
+	t := tag.Get(tagValue)
 	if t == "-" {
 		return tagOptions{skip: true}
 	}
